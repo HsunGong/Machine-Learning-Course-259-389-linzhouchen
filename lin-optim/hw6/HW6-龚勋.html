@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>HW 6</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        <h2 id="hw-6">HW 6</h2>
+<h3 id="1">1</h3>
+<p>结论：Dual apporach 比 projected gradient descent with inexact-line 表现差</p>
+<p><img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\1-1-Projection.png" alt="Projection">
+<img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\1-2-dualProb.png" alt="Dual apporach"></p>
+<h4 id="1-1-projected-descent">1-1 Projected Descent</h4>
+<p>在40次迭代后达到收敛要求。</p>
+<p>答案：-164.94922113842483</p>
+<h4 id="1-2-dual-apporach">1-2 Dual apporach</h4>
+<p>通过设置load，save保持两个问题的一致性。</p>
+<p>在300次迭代之后达到与1-1相同的收敛要求，但是由于解决的是dual，相关精度可能不准。</p>
+<p>答案：-164.9492386812406</p>
+<h3 id="2-penalty">2 Penalty</h3>
+<p><img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\2-penalty-0.1.png" alt="Penalty"><img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\2-penalty-0.5.png" alt="Penalty"></p>
+<p>设置惩罚系数0.1，在300次左右收敛速度减慢。</p>
+<p>设置惩罚系数到0.2,0.4,0.5，发现收敛速度变慢的位置逐渐后移。</p>
+<p>设置惩罚系数0.5，在400次左右收敛速度减慢。</p>
+<p>惩罚系数0.1 比 0.5 好。</p>
+<h3 id="3">3</h3>
+<h4 id="3-1-l1-norm">3-1 L1-norm</h4>
+<p><img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\3-1-FrankWolfe.png" alt="FW">
+<img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\3-1-FrankWolfeProjection.png" alt="FW-Projection">
+<img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\3-1-Compare.png" alt="Compare"></p>
+<p>结论：前阶段，单 FrankWolfe 比 projected after FrankWolfe 表现好（单FW值更小），后阶段单FW值更大，但是差别不大。0.2056</p>
+<h4 id="3-2-linf-norm">3-2 Linf-norm</h4>
+<p><img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\3-1-FrankWolfe.png" alt="FW">
+<img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\3-1-FrankWolfeProjection.png" alt="FW-Projection"></p>
+<p>结论：单 FrankWolfe 比 projected after FrankWolfe 表现差, 单F更大的rate=0.685</p>
+<h3 id="4">4</h3>
+<p><img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\4-Ladmpsap.png" alt="LADMPSAP"></p>
+<p>使用书中给出的两种收敛判定方法进行判定</p>
+<h3 id="5">5</h3>
+<p><img src="file:///c:\Users\xun\OneDrive\Desktop\optim\hw5\5-Coordinate.png" alt="BCD"></p>
+<p>最后两者的norm-l2为：158.26</p>
+
+    </body>
+    </html>

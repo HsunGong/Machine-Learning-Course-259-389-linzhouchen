@@ -1,0 +1,188 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\usepackage{algorithmic}
+% \usepackage{xeCJK}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{enumitem} 
+\usepackage{gensymb}
+\usepackage[titletoc]{appendix}
+
+\usepackage{fontspec}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{enumerate}
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{2em} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Zhiyuan College, Shanghai Jiaotong University} \\ % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge CS389: Foundations of Data Science Homework I\\ % The assignment title
+\horrule{2pt} \\ % Thick bottom horizontal rule
+}
+
+\author{Xun Gong, 517020910141} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+
+\begin{document}
+
+\maketitle % Print the title
+
+\section*{Exercise 2.14}
+\subsection*{(1)}
+$$ 2^{d-k}C(k, d) $$
+Let $Q(k, d)$ denote the number of k-dimensional faces in a d-cube.
+STEP1: There are $n$ edges connected from each vertex, and we get a k-face for any subset of $k$ distinct edges from among these $d$ edges. Therefore the number of k-faces at each vertex of an d-cube is $C(k, d) = d!/[k!(d - k)!]$.
+STEP2: For a n-cube, we have $2n$ surfaces. Since we have $C(k, d)$ k-cubes at each of the $2n$ surfaces, we obtain a total number $2^dC(k, d)$. 
+STEP3: But in this count, each face is counted $2^k$ times, so we divide by that number to get the final formula: $Q(k, d) = 2^{n-k}C(k, d)$.
+
+\subsection*{(2)}
+$$3^d$$
+A cube subdivided into smaller faces. From what shows above, 
+$Q(0,d) + Q(1,d) + ... + Q(d-1,d) + Q(d,d) 
+= 2^d + C(1,d)2^{d-1} + C(2,d)2^{d-2} + ... + C(d-1,d)2 + C(d,d)
+= (2 + 1)^d = 3^d$
+
+\subsection*{(3)}
+$$2d$$
+$Q(d-1, d) = 2d$, side-length = 1, therefore $\text{area} = 2d$
+
+
+\subsection*{(4)}
+$$ 2^d\cdot d $$
+Area = $ 2^{d-1} \cdot 2d = 2^d\cdot d$
+\subsection*{(5)}
+Proof: (Use method of Section 2.3)
+Let $\theta$ be the width of surface.
+$$V(\textit{surface}) / V = 1 - (1-\theta)^d \geq 1 - e^{-\theta d}$$
+When $d$ is large enough, no matter how small $\theta$ is, this ratio shall be close to $1$.
+
+
+\section*{Exercise 2.16}
+
+$r = 1, h = 1$
+
+\subsection*{3-dimension}
+horizontal plane:
+$$ Area = Volume(2-plane) = \pi$$
+half of a circular ball: 
+$$ Area = \frac{1}{2} Area(3-ball) = 2\pi $$
+
+\subsection*{4-dimension}
+horizontal plane:
+$$ Area = \frac{4}{3} \pi$$
+half of a circular ball: 
+$$ Area = \frac{1}{2} \pi^2 $$
+
+
+\section*{Exercise 2.18}
+
+Use Lemma 2.6, $$ V(d) = \int_{r=0}^{r_0} r^{d-1} dr \int_{S^d} \Omega = \frac{r^d}{d}A(d) $$
+and, $$ A(d) = \frac{2 \pi}{\tau(d/2)} $$
+
+\subsection*{r = 2}
+
+$$ V_2(d) = \frac{2 \pi}{d*\tau(d/2)} * 2^d $$
+
+\subsection*{r > 2, ind}
+
+$$ V_r(d) = \frac{2 \pi}{d*\tau(d/2)} * r^d $$
+
+\subsection*{r = f(d)}
+Want $V_r(d) \rightarrow Constant as d \rightarrow \infty$, therefore,
+$ lim_{d \rightarrow \infty} (v_r - C) = 0 $
+
+$$ r = \sqrt[d]{ C*\frac{d \tau(d/2}{2 \pi} } $$
+and $n! \approx (n / e)^n$
+$$ r =  \sqrt{\frac{d}{2 \pi e}} \sqrt[d]{C \pi d} $$
+
+
+\section*{Exercise 2.26}
+
+Equally to prove $A \cap B = Volume$, $A$ = narrow slice at the equator, $B$ = narrow annulus at the surface.
+
+And So, 
+$$ V(A \cap B) / V = \frac{1}{1 + \frac{2}{c}e^{-c^2/2}}(1 - (1-\epsilon)^d) = 1 $$
+while $d \rightarrow \infty$
+
+therefore, they are simultaneous. 
+\begin{flushright} \item{$\square$} \end{flushright}
+
+\section*{Exercise 2.38}
+
+Code is in the attachment.
+\newline
+Solution:
+
+\begin{tabular}{cc}
+
+k & percent of $\sqrt{k}$ (100\%) \\
+100 & 8.2 \\
+50 & 12.0 \\
+10 & 25.8 \\ 
+5 & 34.5 \\
+4 & 36.2 \\
+3 & 45.4 \\
+2 & 60.3 \\
+1 & 72.8 \\
+
+\end{tabular}
+
+\section*{Exercise 2.40}
+
+Code is in the attachment.
+
+\begin{description}
+    \item Method 1: 0.6392458491507906
+    \item Method 2: 0.6477522979226946
+\end{description}
+
+\noindent{Method 2 is better.}
+
+
+% \appendix
+% \renewcommand{\appendixname}{Appendix~\Alph{section}}
+
+% \section{Appendix 1: Code}
+\mint{python}
+\begin{lstlisting}
+
+distance = []
+for i in range(num):
+    for j in range(i+1, num):
+        distance.append(np.linalg.norm(s[i] - s[j]))
+
+\end{lstlisting}
+
+
+
+\end{document}

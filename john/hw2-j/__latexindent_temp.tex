@@ -1,0 +1,89 @@
+
+\documentclass[a4paper, 11pt]{article}
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage{mathpazo}
+\usepackage{multicol}
+\usepackage{enumerate, eucal}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath,amsfonts,amsthm, amssymb} % Math packages
+
+\author{Xun Gong(517020910141}
+\title{Homework 2}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\maketitle
+
+\noindent
+\normalsize {\bf CS389: Foundations of Data Science @ SJTU} \hfill ACM Class, Zhiyuan College, SJTU\\
+Prof.~{\bf John Hopcroft} \hfill Due Date: June 03, 2019\\
+
+\section*{Exercise 3.12}
+
+\subsection*{(1)}
+
+$$||A_k||_F^2 = \sum_{i=1}^k A v_i v_i^T = \sum_{i=1}^k \sigma_i^2  $$
+
+
+\subsection*{(2)}
+
+$$||A_k||_2^2 = max|A_k x| = \sigma_1 $$
+
+\subsection*{(3)}
+
+$$||A - A_k||_F^2 = \sum_{i=k+1}^n A v_i v_i^T = \sum_{i=k+1}^n \sigma_i^2 $$
+
+\subsection*{(4)}
+From Lemma 3.8, 
+$$||A - A_k||_2^2 = \sigma_{k+1} $$
+
+\section*{Exercise 3.13}
+
+
+\begin{align*}
+    & \because   A \text{ is symmetric} \\
+    & \therefore A^T = A \\
+    & \therefore A^2 = A^T A = V\Sigma^2 V^T = V \Sigma V^T V \Sigma V^T \\
+    & \therefore A = V \Sigma V^T \text{, V is unique.} \\
+    & \text{Use the same rule, } A = U \Sigma U^T \\
+    & \therefore U = V \\
+    & \therefore u_i = v_i \\
+\end{align*}
+
+% \subsection*{(1) $A = VDV^T$}
+
+% \begin{align*}
+%     & \because   A \text{ is symmetric} \\
+%     & \therefore A \text{ is normal} \\
+%     & \therefore A \text{ is diagonal} \\
+%     & \therefore A \text{ can be Eigen decomposed, } A = VDV^T \\
+% \end{align*}
+
+% \subsection*{(1) $U = V$}
+
+\section*{Exercise 3.16}
+
+\subsection*{(1)}
+
+Estimate [0.00390622, 0.99999237]
+
+\subsection*{(2)}
+
+B = \begin{pmatrix}
+    4 & 0 \\
+    0 & 16 \\
+\end{pmatrix}
+
+\subsection*{(3)}
+
+
+\section*{Exercise 3.18}
+
+\section*{Exercise 3.28}
+
+\section*{Exercise 3.32}
+
+
+\end{document}

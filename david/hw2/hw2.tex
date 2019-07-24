@@ -1,0 +1,127 @@
+
+\documentclass[a4paper, 11pt]{article}
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage{mathpazo}
+\usepackage{multicol}
+\usepackage{enumerate, eucal}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{xcolor}
+\usepackage{amsmath,amsfonts,amsthm, amssymb} % Math packages
+
+\lstdefinestyle{lfonts}{
+  basicstyle   = \footnotesize\ttfamily,
+  stringstyle  = \color{purple},
+  keywordstyle = \color{blue!60!black}\bfseries,
+  commentstyle = \color{olive}\scshape,
+}
+\lstdefinestyle{lnumbers}{
+  numbers     = left,
+  numberstyle = \tiny,
+  numbersep   = 1em,
+  firstnumber = 1,
+  stepnumber  = 1,
+}
+\lstdefinestyle{llayout}{
+  breaklines       = true,
+  tabsize          = 2,
+  columns          = flexible,
+}
+\lstdefinestyle{lgeometry}{
+  xleftmargin      = 20pt,
+  xrightmargin     = 0pt,
+  frame            = tb,
+  framesep         = \fboxsep,
+  framexleftmargin = 20pt,
+}
+\lstdefinestyle{lgeneral}{
+  style = lfonts,
+  style = lnumbers,
+  style = llayout,
+  style = lgeometry,
+}
+\lstdefinestyle{python}{
+    language = {Python},
+    style    = lgeneral,
+}
+
+
+
+
+
+
+
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large \textbf{Homework 1} \hfill \textbf{Xun Gong(517020910141} \\
+\normalsize {\bf CS 259 @ SJTU} \hfill ACM Class, Zhiyuan College, SJTU\\
+Prof.~{\bf David Bindel} \hfill Due Date: May 29, 2019\\
+TA.~{\bf Zhou Fan} \hfill Submit Date: \today
+
+\section*{Problem 1: Constrained least squares}
+
+\subsection*{(1)}
+
+\begin{align*}
+&\because \sum x_i = 1 \\
+&\therefore c = (1 \cdots 1),\ cx c^T = 1 \\
+&\mathcal{L} = ||Ax - b||^2 + \lambda (cx c^T - 1) \\
+&\delta \mathcal{L} = \delta ||Ax - b||^2 + \lambda c \delta x c^T
+                    + \delta \lambda (cx - 1) \\
+&\delta \mathcal{L} = \delta x^T (2A^T A x - 2A^T b - \lambda c x c^T) + \delta \lambda (cx c^T - 1) = 0\\
+\end{align*}
+
+$$\therefore KKT 
+\begin{cases}
+    2A^T A x - 2A^T b - \lambda c x c^T = 0 \\
+    cx - 1 = 0\\
+\end{cases}$$
+
+\subsection*{(2)}
+
+$$x = 1/2 *(A^T A)^{-1} (2 A^T b  + \lambda c^T)$$
+$\text{and } cx = 1$
+$$\lambda = 2 (R^T R) (1 - R^{-1} R^{-T} A^T b c) $$
+$$x = 0.5*(R^{-1}R^{-T}(2A^Tb + 2R^TRc^T - 2A^T b c c^T))$$
+$$x = R^{-1}R^{-T}A^Tb + c^T -  R^{-1}R^{-T} A^T b $$
+
+
+\lstinline[style = python]|print('Hello world!')|
+\begin{minted}{Python}
+% \begin{lstlisting}[style = python]
+import numpy as np
+from sympy import *
+Q, R = np.linalg.qr(A)
+c = [1]*n
+X = R.I * (R.T).I * A.T * b + c.T -  R.I * (R.T).I * A.T * b
+% \end{lstlisting}
+\end{minted}
+
+
+\section*{Problem 2: Residual sensitivity}
+
+\subsection*{(1)}
+Equal to show  $||r|| \delta ||r|| = r^T \delta r $ \\
+Equal to show $\delta (||r||^2) = 2 r^T \delta r $ 
+
+\begin{align*}
+    \delta (||r||^2) &= \delta (r^T r) \\
+    &= (\delta r^T) r + r^T \delta r \\
+    &= 2 r^T \delta r \\
+\end{align*}
+
+\subsection*{(2)}
+
+Equal to show $||r|| \delta ||r|| = - r^T \delta A x $ \\
+And from (1), $r^T \delta r = - r^T \delta A x $ \\
+Equal to show $ \delta r = - \delta A x $ ()\\
+And $r = b - A x$ \\
+$\therefore \delta r = 0 - \delta A x $ is equal to (*).
+
+$\square$
+
+\end{document}

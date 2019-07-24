@@ -1,0 +1,83 @@
+
+\documentclass[a4paper, 11pt]{article}
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage{mathpazo}
+\usepackage{multicol}
+\usepackage{enumerate, eucal}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath,amsfonts,amsthm, amssymb} % Math packages
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large \textbf{Homework 1} \hfill \textbf{Xun Gong(517020910141} \\
+\normalsize {\bf CS 259 @ SJTU} \hfill ACM Class, Zhiyuan College, SJTU\\
+Prof.~{\bf David Bindel} \hfill Due Date: May 29, 2019\\
+TA.~{\bf Zhou Fan} \hfill Submit Date: \today
+
+\section*{Problem 1: Constrained least squares}
+
+\subsection*{(1)}
+
+\begin{align*}
+&\because \sum x_i = 1 \\
+&\therefore || x ||^2 = 1 \\
+&\mathcal{L} = ||Ax - b||^2 + \lambda ||x||^2 + \mu A^T (b - Ax) \\
+&\delta \mathcal{L} = \delta ||Ax - b||^2 + \lambda * \delta ||x||^2 + \delta \mu A^T (b - Ax)\\
+&\delta \mathcal{L} = 2*\delta x^T (A^T A x - A^T b - \lambda x) = 0\\
+\end{align*}
+
+$$\therefore KKT 
+\begin{cases}
+    x^* = (A^T A - \lambda)^{-1} A^T b \\
+    ||x^*|| = 1 \\
+\end{cases}$$
+
+\subsection*{(2)}
+
+\lstset{
+    language=python,
+    numbers=left, 
+    numberstyle= \tiny, 
+    keywordstyle= \color{ blue!70},
+    commentstyle= \color{red!50!green!50!blue!50}, 
+    rulesepcolor= \color{ red!20!green!20!blue!20} ,
+    escapeinside=``, % 英文分号中可写入中文
+    xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+    framexleftmargin=2em
+}
+\begin{lstlisting}
+import numpy as np
+from sympy import *
+q, r = np.linalg.qr(A)
+p = Symbol('p')
+X = (A.T*A - p).I * A.T * b
+solve(np.norm(X) - 1)
+\end{lstlisting}
+
+
+\section*{Problem 2: Residual sensitivity}
+
+\subsection*{(1)}
+Equal to show  $||r|| \delta ||r|| = r^T \delta r $ \\
+Equal to show $\delta (||r||^2) = 2 r^T \delta r $ 
+
+\begin{align*}
+    \delta (||r||^2) &= \delta (r^T r) \\
+    &= (\delta r^T) r + r^T \delta r \\
+    &= 2 r^T \delta r \\
+\end{align*}
+
+\subsection*{(2)}
+
+Equal to show $||r|| \delta ||r|| = - r^T \delta A x $ \\
+And from (1), $r^T \delta r = - r^T \delta A x $ \\
+Equal to show $ \delta r = - \delta A x $ ()\\
+And $r = b - A x$ \\
+$\therefore \delta r = 0 - \delta A x $ is equal to (*).
+
+$\square$
+
+\end{document}
